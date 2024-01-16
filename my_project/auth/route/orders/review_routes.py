@@ -1,7 +1,7 @@
 from http import HTTPStatus
 from flask import Blueprint, jsonify, Response, request, make_response
 from my_project.auth.controller.orders import review_controller
-from my_project.auth.domain.orders.review import Review
+from my_project.auth.domain.orders.review import Reviews
 
 
 review_bp = Blueprint('reviews', __name__, url_prefix='/reviews')
@@ -13,7 +13,7 @@ def get_all_reviews() -> Response:
 @review_bp.post('')
 def create_review() -> Response:
     content = request.get_json()
-    review = Review.create_from_dto(content)
+    review = Reviews.create_from_dto(content)
     review_controller.create(review)
     return make_response(jsonify(review.put_into_dto()), HTTPStatus.CREATED)
 
@@ -24,7 +24,7 @@ def get_review(review_id: int) -> Response:
 @review_bp.put('/<int:review_id>')
 def update_review(review_id: int) -> Response:
     content = request.get_json()
-    review = Review.create_from_dto(content)
+    review = Reviews.create_from_dto(content)
     review_controller.update(review_id, review)
     return make_response("Review updated", HTTPStatus.OK)
 

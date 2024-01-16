@@ -2,20 +2,11 @@
 
 from typing import Dict, Any
 from my_project.auth.dao.general_dao import GeneralDAO
-from my_project.auth.domain.orders.transaction import Transaction
+from my_project.auth.domain.orders.transaction import Transactions
 
 
 class TransactionDAO(GeneralDAO):
-    _domain_type = Transaction
+    _domain_type = Transactions
 
-    # Додайте інші методи DAO за необхідності
 
-    def find_by_user_id(self, user_id: int) -> List[Transaction]:
-        """
-        Find transactions for a specific user.
-        :param user_id: ID of the user
-        :return: List of Transaction objects
-        """
-        return self._session.query(self._domain_type).filter_by(user_id=user_id).all()
 
-    # Додайте інші методи за необхідності

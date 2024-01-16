@@ -1,10 +1,10 @@
 from typing import Dict, Any
+from my_project.db import db
+from my_project.auth.domain.i_dto import IDto
 
-from my_project import db
 
-
-class Hotels(db.Model):
-    tablename = "hotels"
+class Hotels(db.Model, IDto):
+    __tablename__ = "hotels"
 
     hotel_id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(255))
@@ -19,7 +19,7 @@ class Hotels(db.Model):
         obj = Hotels(
             hotel_id=dto_dict.get('hotel_id'),
             name=dto_dict.get('name'),
-            location_id=dto_dict.get('location_id'),
+            # location_id=dto_dict.get('location_id'),
             rating=dto_dict.get('rating'),
         )
         return obj
@@ -28,6 +28,6 @@ class Hotels(db.Model):
         return {
             'hotel_id': self.hotel_id,
             'name': self.name,
-            'location_id': self.location_id,
+            # 'location_id': self.location_id,
             'rating': self.rating
         }

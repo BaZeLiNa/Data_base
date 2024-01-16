@@ -1,7 +1,7 @@
 from http import HTTPStatus
 from flask import Blueprint, jsonify, Response, request, make_response
 from my_project.auth.controller import transaction_controller
-from my_project.auth.domain.orders.transaction import Transaction
+from my_project.auth.domain.orders.transaction import Transactions
 
 transaction_bp = Blueprint('transactions', __name__, url_prefix='/transactions')
 
@@ -12,7 +12,7 @@ def get_all_transactions() -> Response:
 @transaction_bp.post('')
 def create_transaction() -> Response:
     content = request.get_json()
-    transaction = Transaction.create_from_dto(content)
+    transaction = Transactions.create_from_dto(content)
     transaction_controller.create(transaction)
     return make_response(jsonify(transaction.put_into_dto()), HTTPStatus.CREATED)
 
@@ -23,7 +23,7 @@ def get_transaction(transaction_id: int) -> Response:
 @transaction_bp.put('/<int:transaction_id>')
 def update_transaction(transaction_id: int) -> Response:
     content = request.get_json()
-    transaction = Transaction.create_from_dto(content)
+    transaction = Transactions.create_from_dto(content)
     transaction_controller.update(transaction_id, transaction)
     return make_response("Transaction updated", HTTPStatus.OK)
 

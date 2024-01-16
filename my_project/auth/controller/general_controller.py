@@ -1,13 +1,7 @@
-"""
-2022
-apavelchak@gmail.com
-© Andrii Pavelchak
-"""
-
 from abc import ABC
+from http import HTTPStatus
 from typing import List, Dict
 
-from http import HTTPStatus
 from flask import abort
 
 
@@ -15,6 +9,7 @@ class GeneralController(ABC):
     """
     The common realization of controller.
     """
+
     _service = None
 
     def find_all(self) -> List[object]:

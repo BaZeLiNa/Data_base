@@ -5,18 +5,15 @@ from typing import Dict, Any
 
 from flask import Flask
 from flask_restx import Api, Resource
-from flask_sqlalchemy import SQLAlchemy
 from sqlalchemy_utils import database_exists, create_database
 
+from my_project.db import db
 from my_project.auth.route import register_routes
 
 SECRET_KEY = "SECRET_KEY"
 SQLALCHEMY_DATABASE_URI = "SQLALCHEMY_DATABASE_URI"
 MYSQL_ROOT_USER = "MYSQL_ROOT_USER"
 MYSQL_ROOT_PASSWORD = "MYSQL_ROOT_PASSWORD"
-
-# Database
-db = SQLAlchemy()
 
 
 def create_app(app_config: Dict[str, Any], additional_config: Dict[str, Any]) -> Flask:
