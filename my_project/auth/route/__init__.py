@@ -14,9 +14,10 @@ from .orders.transaction_routes import transaction_bp
 from .orders.blocked_fund_routes import blocked_fund_bp
 from .orders.hotel_routes import hotel_bp
 from .orders.location_routes import location_bp
-from .orders.hotel_network_routes import hotel_network_bp
+# from .orders.hotel_network_routes import hotel_network_bp
 from .orders.network_routes import network_bp
 from .orders.room_routes import room_bp
+
 
 def register_routes(app: Flask) -> None:
     """
@@ -30,7 +31,7 @@ def register_routes(app: Flask) -> None:
     app.register_blueprint(blocked_fund_bp)
     app.register_blueprint(hotel_bp)
     app.register_blueprint(location_bp)
-    app.register_blueprint(hotel_network_bp)
+    # app.register_blueprint(hotel_network_bp)
     app.register_blueprint(network_bp)
     app.register_blueprint(user_bp)
     app.register_blueprint(room_bp)

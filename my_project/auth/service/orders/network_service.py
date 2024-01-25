@@ -7,3 +7,6 @@ class NetworkService(GeneralService):
     Realisation of Network service.
     """
     _dao = network_dao
+
+    def find_hotels_in_network(self, network_id: int):
+        self._dao.find_hotels_in_network(network_id)

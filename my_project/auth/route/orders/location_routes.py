@@ -24,6 +24,11 @@ def get_location(location_id: int) -> Response:
     return make_response(jsonify(location_controller.find_by_id(location_id)), HTTPStatus.OK)
 
 
+@location_bp.get('/hotels/<int:location_id>')
+def get_location_hotels(location_id: int) -> Response:
+    return make_response(jsonify(location_controller.find_hotels_in_location(location_id)), HTTPStatus.OK)
+
+
 @location_bp.put('/<int:location_id>')
 def update_location(location_id: int) -> Response:
     content = request.get_json()

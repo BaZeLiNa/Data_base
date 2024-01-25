@@ -23,6 +23,26 @@ def get_hotel(hotel_id: int) -> Response:
     return make_response(jsonify(hotel_controller.find_by_id(hotel_id)), HTTPStatus.OK)
 
 
+@hotel_bp.get('/rooms/<int:hotel_id>')
+def get_hotel_rooms(hotel_id: int) -> Response:
+    return make_response(jsonify(hotel_controller.find_rooms_in_hotel(hotel_id)), HTTPStatus.OK)
+
+
+@hotel_bp.get('/reservations/<int:hotel_id>')
+def get_hotel_reservations(hotel_id: int) -> Response:
+    return make_response(jsonify(hotel_controller.find_reservations_in_hotels(hotel_id)), HTTPStatus.OK)
+
+
+@hotel_bp.get('/reviews/<int:hotel_id>')
+def get_hotel_reviews(hotel_id: int) -> Response:
+    return make_response(jsonify(hotel_controller.find_hotels_with_reviews(hotel_id)), HTTPStatus.OK)
+
+
+@hotel_bp.get('/networks/<int:hotel_id>')
+def get_hotel_networks(hotel_id: int) -> Response:
+    return make_response(jsonify(hotel_controller.find_hotels_with_networks(hotel_id)), HTTPStatus.OK)
+
+
 @hotel_bp.put('/<int:hotel_id>')
 def update_hotel(hotel_id: int) -> Response:
     content = request.get_json()

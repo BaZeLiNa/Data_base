@@ -7,9 +7,10 @@ from .orders.transaction_dao import TransactionDAO
 from .orders.blocked_fund_dao import BlockedFundDAO
 from .orders.hotel_dao import HotelDAO
 from .orders.location_dao import LocationDAO
-from .orders.hotel_network_dao import HotelNetworkDAO
+# from .orders.hotel_network_dao import HotelNetworkDAO
 from .orders.network_dao import NetworkDAO
 from .orders.room_dao import RoomDAO
+# from .orders.guest_dao import GuestsDAO
 
 
 
@@ -19,8 +20,9 @@ review_dao = ReviewDAO()
 reservation_dao = ReservationDAO()
 transaction_dao = TransactionDAO()
 blocked_fund_dao = BlockedFundDAO()
-hotel_network_dao = HotelNetworkDAO()
+# hotel_network_dao = HotelNetworkDAO()
 network_dao = NetworkDAO()
 room_dao = RoomDAO()
 location_dao = LocationDAO()
 hotel_dao = HotelDAO()
+# guest_dao = GuestsDAO()

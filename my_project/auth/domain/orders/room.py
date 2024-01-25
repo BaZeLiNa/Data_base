@@ -10,9 +10,11 @@ class Rooms(db.Model, IDto):
     __tablename__ = 'rooms'
 
     room_number = db.Column(db.Integer, primary_key=True)
-    hotel_id = db.Column(db.Integer)  # foreign key
+    hotel_id = db.Column(db.Integer, db.ForeignKey('hotels.hotel_id'))
     room_type = db.Column(db.String(255))
     price = db.Column(db.Integer)
+
+    hotel = db.relationship('Hotels', back_populates='rooms')
 
     def __repr__(self):
         return (f"Room(room_number={self.room_number}, hotel_id={self.hotel_id},"

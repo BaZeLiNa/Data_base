@@ -8,11 +8,16 @@ class Reservations(db.Model, IDto):
     __tablename__ = 'reservations'
 
     reservation_id = db.Column(db.Integer, primary_key=True)
-    user_id = db.Column(db.Integer)  # foreign key
-    hotel_id = db.Column(db.Integer)  # foreign key
+    user_id = db.Column(db.Integer, db.ForeignKey('users.user_id'))
+    hotel_id = db.Column(db.Integer, db.ForeignKey('hotels.hotel_id'))
     room_number = db.Column(db.Integer)
     checkin_date = db.Column(db.Date)
     checkout_date = db.Column(db.Date)
+
+    hotel = db.relationship('Hotels', back_populates='reservations')
+    user = db.relationship('Users')
+
+    idx_reservation_userid = db.Index('idx_reservation_userid', user_id)
 
     def __repr__(self) -> str:
         return (f"(Reservation(reservation_id={self.reservation_id},"

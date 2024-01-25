@@ -9,6 +9,8 @@ class Networks(db.Model, IDto):
     network_id = db.Column(db.Integer, primary_key=True)
     network_name = db.Column(db.String(255))
 
+    hotels = db.relationship('Hotels', secondary='hotel_networks', overlaps="network")
+
     def __repr__(self) -> str:
         return f"Network({self.network_id}, {self.network_name})"
 

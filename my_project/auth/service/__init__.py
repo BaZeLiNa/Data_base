@@ -12,10 +12,11 @@ from .orders.network_service import NetworkService
 from .orders.transaction_service import TransactionService
 from .orders.location_service import LocationService
 from .orders.hotel_service import HotelService
-from .orders.hotel_network_service import HotelNetworkService
+# from .orders.hotel_network_service import HotelNetworkService
 from .orders.blocked_fund_service import BlockedFundService
-#
-#
+# from .orders.guest_service import GuestService
+
+
 reservation_service = ReservationService()
 review_service = ReviewService()
 user_service = UserService()
@@ -24,5 +25,6 @@ network_service = NetworkService()
 transaction_service = TransactionService()
 location_service = LocationService()
 hotel_service = HotelService()
-hotel_network_service = HotelNetworkService()
+# hotel_network_service = HotelNetworkService()
 blocked_fund_service = BlockedFundService()
+# guest_service = GuestService()

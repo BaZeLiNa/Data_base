@@ -10,10 +10,13 @@ class Reviews(db.Model, IDto):
     __tablename__ = 'reviews'
 
     review_id = db.Column(db.Integer, primary_key=True)
-    hotel_id = db.Column(db.Integer)  # foreign key
-    user_id = db.Column(db.Integer)  # foreign key
+    hotel_id = db.Column(db.Integer, db.ForeignKey('hotels.hotel_id'))
+    user_id = db.Column(db.Integer, db.ForeignKey('users.user_id'))
     rating = db.Column(db.Integer)
     comment = db.Column(db.String(255))
+
+    user = db.relationship("Users", back_populates='reviews')
+    hotel = db.relationship("Hotels", back_populates='reviews')
 
     def __repr__(self):
         return (f"Review(review_id={self.review_id}, hotel_id={self.hotel_id},"

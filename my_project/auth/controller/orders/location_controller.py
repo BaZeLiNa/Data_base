@@ -12,3 +12,9 @@ class LocationController(GeneralController):
     def __init__(self):
         super().__init__()
         self._service = LocationService()
+
+    def find_hotels_in_location(self, location_id: int):
+        """
+        Find all hotels in a location by location_id
+        """
+        return self._service.find_hotels_in_location(location_id)

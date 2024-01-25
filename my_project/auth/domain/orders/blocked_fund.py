@@ -8,9 +8,11 @@ class BlockedFunds(db.Model, IDto):
     __tablename__ = 'blocked_funds'
 
     blocked_fund_id = db.Column(db.Integer, primary_key=True)
-    user_id = db.Column(db.Integer)  # foreign key
+    user_id = db.Column(db.Integer, db.ForeignKey('users.user_id'))
     amount = db.Column(db.Integer)
     expiry_date = db.Column(db.Date)
+
+    user = db.relationship('Users', back_populates='blocked_funds')
 
     def __repr__(self):
         return (f"BlockedFund(blocked_fund_id={self.blocked_fund_id}, user_id={self.user_id},"

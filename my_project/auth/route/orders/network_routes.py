@@ -1,6 +1,7 @@
 from http import HTTPStatus
 from flask import Blueprint, jsonify, Response, request, make_response
-from my_project.auth.controller.orders import network_controller
+
+from my_project.auth.controller import network_controller
 from my_project.auth.domain.orders.network import Networks
 
 network_bp = Blueprint('networks', __name__, url_prefix='/networks')
@@ -22,6 +23,11 @@ def create_network() -> Response:
 @network_bp.get('/<int:network_id>')
 def get_network(network_id: int) -> Response:
     return make_response(jsonify(network_controller.find_by_id(network_id)), HTTPStatus.OK)
+
+
+@network_bp.get('/hotels/<int:network_id>')
+def get_network_hotels(network_id: int) -> Response:
+    return make_response(jsonify(network_controller.find_hotels_in_network(network_id)), HTTPStatus.OK)
 
 
 @network_bp.put('/<int:network_id>')

@@ -24,6 +24,26 @@ def get_user(user_id: int) -> Response:
     return make_response(jsonify(user_controller.find_by_id(user_id)), HTTPStatus.OK)
 
 
+@user_bp.get('/transactions/<int:user_id>')
+def get_user_transactions(user_id: int) -> Response:
+    return make_response(jsonify(user_controller.find_users_with_transactions(user_id)), HTTPStatus.OK)
+
+
+@user_bp.get('/blocked-funds/<int:user_id>')
+def get_user_blocked_funds(user_id: int) -> Response:
+    return make_response(jsonify(user_controller.find_users_with_blocked_funds(user_id)), HTTPStatus.OK)
+
+
+@user_bp.get('/reviews/<int:user_id>')
+def get_user_reviews(user_id: int) -> Response:
+    return make_response(jsonify(user_controller.find_users_with_reviews(user_id)), HTTPStatus.OK)
+
+
+@user_bp.get('/reservations/<int:user_id>')
+def get_user_reservations(user_id: int) -> Response:
+    return make_response(jsonify(user_controller.find_users_with_reservations(user_id)), HTTPStatus.OK)
+
+
 @user_bp.put('/<int:user_id>')
 def update_user(user_id: int) -> Response:
     content = request.get_json()

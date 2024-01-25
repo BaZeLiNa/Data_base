@@ -13,8 +13,9 @@ from .orders.transaction_controller import TransactionController
 from .orders.reservation_controller import ReservationController
 from .orders.network_controller import NetworkController
 from .orders.location_controller import LocationController
-from .orders.hotel_network_controller import HotelNetworkController
+# from .orders.hotel_network_controller import HotelNetworkController
 from .orders.blocked_fund_controller import BlockedFundController
+# from .orders.guest_controller import GuestController
 #
 room_controller = RoomController()
 user_controller = UserController()
@@ -24,5 +25,6 @@ transaction_controller = TransactionController()
 reservation_controller = ReservationController()
 network_controller = NetworkController()
 location_controller = LocationController()
-hotel_network_controller = HotelNetworkController()
+# hotel_network_controller = HotelNetworkController()
 blocked_fund_controller = BlockedFundController()
+# guest_controller = GuestController()

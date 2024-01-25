@@ -8,9 +8,11 @@ class Transactions(db.Model, IDto):
     __tablename__ = 'transactions'
 
     transaction_id = db.Column(db.Integer, primary_key=True)
-    user_id = db.Column(db.Integer)  # foreign key
+    user_id = db.Column(db.Integer, db.ForeignKey('users.user_id'))
     amount = db.Column(db.Numeric(precision=10, scale=2, asdecimal=False))
     date = db.Column(db.Date)
+
+    user = db.relationship('Users', back_populates='transactions')
 
     def __repr__(self):
         return (f"Transaction(transaction_id={self.transaction_id},"

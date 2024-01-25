@@ -11,6 +11,11 @@ class Users(db.Model, IDto):
     username = db.Column(db.String(255))
     email = db.Column(db.String(255))
 
+    transactions = db.relationship('Transactions', back_populates='user')
+    blocked_funds = db.relationship('BlockedFunds')
+    reservations = db.relationship('Reservations', back_populates='user')
+    reviews = db.relationship('Reviews', back_populates='user')
+
     def __repr__(self) -> str:
         return f"User({self.user_id}, {self.username}, {self.email})"
 

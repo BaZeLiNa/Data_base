@@ -1,6 +1,7 @@
 from http import HTTPStatus
 from flask import Blueprint, jsonify, Response, request, make_response
-from my_project.auth.controller.orders import review_controller
+
+from my_project.auth.controller import review_controller
 from my_project.auth.domain.orders.review import Reviews
 
 

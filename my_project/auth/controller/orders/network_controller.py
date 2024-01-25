@@ -1,6 +1,5 @@
 from my_project.auth.controller.general_controller import GeneralController
-from my_project.auth.service.orders import network_service
-from my_project.auth.service.orders.network_service import NetworkService
+from my_project.auth.service import network_service
 
 
 class NetworkController(GeneralController):
@@ -11,4 +10,6 @@ class NetworkController(GeneralController):
 
     def __init__(self):
         super().__init__()
-        self._service = NetworkService()
+
+    def find_hotels_in_network(self, network_id: int):
+        self._service.find_hotels_in_network(network_id)

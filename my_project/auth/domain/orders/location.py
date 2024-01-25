@@ -5,11 +5,13 @@ from my_project.db import db
 
 
 class Locations(db.Model, IDto):
-    __tablename__ = "locations"
+    __tablename__ = 'locations'
 
     location_id = db.Column(db.Integer, primary_key=True)
     city = db.Column(db.String(255))
     country = db.Column(db.String(255))
+
+    hotels = db.relationship('Hotels', back_populates='location')
 
     def __repr__(self) -> str:
         return f"Location({self.location_id}, {self.city}, {self.country})"
