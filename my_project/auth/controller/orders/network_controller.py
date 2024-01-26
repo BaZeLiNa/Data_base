@@ -12,4 +12,4 @@ class NetworkController(GeneralController):
         super().__init__()
 
     def find_hotels_in_network(self, network_id: int):
-        self._service.find_hotels_in_network(network_id)
+        return self._service.find_hotels_in_network(network_id)

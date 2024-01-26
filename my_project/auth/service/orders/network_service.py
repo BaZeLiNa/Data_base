@@ -9,4 +9,4 @@ class NetworkService(GeneralService):
     _dao = network_dao
 
     def find_hotels_in_network(self, network_id: int):
-        self._dao.find_hotels_in_network(network_id)
+        return self._dao.find_hotels_in_network(network_id)

@@ -9,14 +9,19 @@ class NetworkDAO(GeneralDAO):
 
     def find_hotels_in_network(self, network_id: int):
         hotels_in_network = (
-            self._session.query(Hotels, HotelNetworks)
-            .join(HotelNetworks, Hotels.hotel_id == HotelNetworks.hotel_id)
-            .filter(HotelNetworks.network_id == network_id)
+            self._session.query(Networks, Hotels)
+            .join(HotelNetworks, Networks.network_id == HotelNetworks.network_id)
+            .join(Hotels, HotelNetworks.hotel_id == Hotels.hotel_id)
+            .filter(Networks.network_id == network_id)
             .all()
         )
 
         hotels_data = [
             {
+                "networks": {
+                    "network_id": network.network_id,
+                    "network_name": network.network_name,
+                },
                 "hotel": {
                     "hotel_id": hotel.hotel_id,
                     "name": hotel.name,
@@ -24,7 +29,7 @@ class NetworkDAO(GeneralDAO):
                     "rating": hotel.rating,
                 },
             }
-            for hotel, network in hotels_in_network
+            for network, hotel in hotels_in_network
         ]
 
         return hotels_data

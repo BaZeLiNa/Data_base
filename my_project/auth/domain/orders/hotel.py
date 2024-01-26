@@ -11,7 +11,6 @@ class Hotels(db.Model, IDto):
     location_id = db.Column(db.Integer, db.ForeignKey('locations.location_id'))
     rating = db.Column(db.Integer)
 
-    networks = db.relationship('Networks', secondary='hotel_networks', back_populates='hotels', overlaps='hotel')
     location = db.relationship('Locations', back_populates='hotels')
     rooms = db.relationship('Rooms', back_populates='hotel')
     reservations = db.relationship('Reservations', back_populates='hotel')

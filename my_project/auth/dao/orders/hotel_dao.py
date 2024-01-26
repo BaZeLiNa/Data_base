@@ -116,6 +116,12 @@ class HotelDAO(GeneralDAO):
 
         hotels_data = [
             {
+                "hotel": {
+                    "hotel_id": hotel.hotel_id,
+                    "name": hotel.name,
+                    "location_id": hotel.location_id,
+                    "rating": hotel.rating,
+                },
                 "networks": {
                     "network_id": network.network_id,
                     "network_name": network.network_name,

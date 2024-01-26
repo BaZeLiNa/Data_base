@@ -10,8 +10,8 @@ class HotelNetworks(db.Model, IDto):
     hotel_id = db.Column(db.Integer, db.ForeignKey("hotels.hotel_id"), primary_key=True)
     network_id = db.Column(db.Integer, db.ForeignKey("networks.network_id"), primary_key=True)
 
-    hotel = db.relationship("Hotels", overlaps="hotel_networks")
-    network = db.relationship("Networks", overlaps="hotel_networks")
+    hotel = db.relationship("Hotels", backref=db.backref('hotel_networks'))
+    network = db.relationship("Networks", backref=db.backref('hotel_networks'))
 
     def __repr__(self) -> str:
         return f"Hotel networks({self.network_id}, {self.hotel_id})"
